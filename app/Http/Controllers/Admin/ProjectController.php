@@ -17,7 +17,7 @@ class ProjectController extends Controller {
     }
 
     public function create(): View {
-        return view("admin.project.create");
+        return view("admin.projects.create");
     }
 
     public function store(Request $request): RedirectResponse {
@@ -38,6 +38,7 @@ class ProjectController extends Controller {
     }
 
     public function show(string $title): View {
+        
         $project = Project::where("title", $title)->first();
 
         return view("admin.projects.show", compact("project"));

@@ -1,0 +1,8 @@
+Esercizio di oggi: Laravel Boolfolio - Base
+
+nome repo: laravel-auth
+
+Ciao ragazzi,
+oggi continuiamo a lavorare sul nostro portfolio 
+implementando le rimanenti crud ed usando i FormRequest
+per la validazione.
