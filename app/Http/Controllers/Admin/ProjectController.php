@@ -14,11 +14,6 @@ class ProjectController extends Controller {
         return view("admin.projects.index", compact("projects"));
     }
 
-    public function show($id) {
-        $project = Project::findOrFail($id);
-
-        return view("admin.projects.show", compact("project"));
-    }
     public function create() {
         return view("admin.project.create");
     }
@@ -38,5 +33,11 @@ class ProjectController extends Controller {
         $project = Project::create($data);
 
         return redirect()->route("admin.projects.show", $project->title);
+    }
+
+    public function show(string $title) {
+        $project = Project::where("title", $title)->first();
+
+        return view("admin.projects.show", compact("project"));
     }
 }

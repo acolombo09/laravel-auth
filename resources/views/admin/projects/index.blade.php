@@ -7,7 +7,7 @@
     @foreach ($projects as $project)
     <div class="col d-flex justify-content-center">
 
-      <div class="card-box">
+      <div class="card">
         <div class="card h-100" style="width: 18rem;">
           <img src="{{$project->thumb}}" class="card-img-top object-fit-cover h-100" alt="{{$project->title}}">
           <div class="card-body">
