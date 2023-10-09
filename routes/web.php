@@ -1,18 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\ProjectController as GuestProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('guests.welcome');
@@ -22,23 +15,25 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Raggruppo le rotte
-// Route::middleware(['auth', 'verified'])
-//     ->prefix("admin")
-//     ->name("admin.")
-//     ->group(function () {
-//     // CREATE
-//     Route::get("/posts/create", [PostController::class, "create"])->name("posts.create");
-//     Route::post("/posts", [PostController::class, "store"])->name("posts.store");
+// Raggruppo le rotte rendendole disponibili solo per utenti loggati
+Route::middleware(['auth', 'verified'])
+    ->prefix("admin") // così posso rimuovere /admin da ogni rotta
+    ->name("admin.") // idem per il name di ogni rotta
+    // il group sempre per ultimo
+    ->group(function () {
+    
+// CREATE
+    Route::get("/projects/create", [ProjectController::class, "create"])->name("projects.create");
+    Route::post("/projects", [ProjectController::class, "store"])->name("projects.store");
 
-//     // READ
-//     Route::get("/posts", [PostController::class, "index"])->name("posts.index");
-//     Route::get("/posts/{post}", [PostController::class, "show"])->name("posts.show");
-// });
+// READ
+    Route::get("/projects", [ProjectController::class, "index"])->name("projects.index");
+    Route::get("/projects/{project}", [ProjectController::class, "show"])->name("projects.show");
+});
 
 // chiamato guestpostcontroller perchè nel controller si è aggiunto "as GuestPostController"
 // per far sì che i nomi tra admin e guests non vengano confusi
-// Route::get("/posts", [GuestPostController::class, "index"])->name("posts.index");
+Route::get("/projects", [GuestProjectController::class, "index"])->name("projects.index");
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
