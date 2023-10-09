@@ -24,6 +24,12 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
+    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
+    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
+});
+
 // Raggruppo le rotte rendendole disponibili solo per utenti loggati
 Route::middleware(['auth', 'verified'])
     ->prefix("admin") // così posso rimuovere /admin da ogni rotta
@@ -31,12 +37,6 @@ Route::middleware(['auth', 'verified'])
     // il group sempre per ultimo
     ->group(function () {
         Route::resource("projects", ProjectController::class);
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
-    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
-    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 });
 
 // DA FARE QUANDO VERRANNO AGGIUNTI SEPARATAMENTE I CONTENUTI PUBBLICI
