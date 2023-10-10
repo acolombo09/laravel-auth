@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text("description");
             $table->string("image")->nullable();
             // inteso come linguaggi di programmazione utilizzati
-            $table->json("language")->nullable();
             $table->string("link");
 
             $table->timestamps();

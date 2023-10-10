@@ -7,6 +7,7 @@ use App\Models\Project;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller {
     // index utente admin
@@ -25,11 +26,8 @@ class ProjectController extends Controller {
             "title" => "required|string",
             "description" => "required|string",
             "image" => "nullable|string",
-            "language" => "nullable|string",
             "link" => "required|string",
         ]);
-
-        $data["language"] = json_encode([$data["language"]]);
 
         // fill e save
         $project = Project::create($data);
@@ -42,5 +40,12 @@ class ProjectController extends Controller {
         $project = Project::where("title", $title)->first();
 
         return view("admin.projects.show", compact("project"));
+    }
+
+    public function edit(string $title): View
+    {
+        $project = Project::where("title", $title)->firstOrFail();
+
+        return view("admin.projects.edit", compact("project"));
     }
 }
