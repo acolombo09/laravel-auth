@@ -11,7 +11,7 @@
             <h2 class="fs-4 text-lg my-4">
               {{ $project->title }}
             </h2>
-            <a class="nav-link d-flex align-items-center text-primary" href="{{ Route("admin.projects.edit", $project->title)}}">Modifica</a>
+            <a class="nav-link d-flex align-items-center text-primary" href="{{ Route("admin.projects.edit", $project->slug)}}">Modify</a>
           </div>
           <div class="d-flex pt-2">
             <div class="row">

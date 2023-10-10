@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="container my-5">
-        <h2 class="fs-4 text-lg my-4">
-          {{ __('Project') }}
-        </h2>
         <div class="row justify-content-center">
             <div class="col-8">
+                <div class="d-flex justify-content-center">
+                    <h2 class="fs-4 text-lg my-4">
+                        Edit {{ $project->title }}
+                    </h2>
+                </div>
 
                 <form action="{{ route('admin.projects.update', $project->title) }}" method="POST">
                     @csrf()
@@ -58,17 +60,20 @@
                         </div>
                     </div>
 
-                    <div class="w-100 text-center">
-                        <a class="btn btn-secondary" href="{{ route("admin.projects.index") }}">Annulla</a>
-                        <button class="btn btn-primary" type="submit">Salva</button>
+                    <div class="w-100 text-center my-5">
+                        <a class="btn btn-secondary" href="{{ route("admin.projects.index") }}">Cancel</a>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                    <div class="d-flex justify-content-center w-100 my-3">
                         <form action="{{ route("admin.projects.destroy", $project->title) }}" method="POST">
                             @csrf
                             @method("DELETE")
                 
-                            <button type="submit" class="btn btn-danger">Elimina</button>
+                            <button type="submit" class="btn btn-danger">Delete Project</button>
                 
                         </form>
                     </div>
+
                 </form>
             </div>
         </div>

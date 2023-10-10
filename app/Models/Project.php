@@ -12,6 +12,7 @@ class Project extends Model {
         'title',
         'description',
         'image',
+        'slug',
         'link',
     ];
 }

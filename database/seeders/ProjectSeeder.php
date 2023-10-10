@@ -13,12 +13,13 @@ class ProjectSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(Faker $faker): void {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             $proj = new Project;
 
             $proj->title = $faker->word();
             $proj->description = $faker->sentence();
             $proj->image = $faker->imageUrl(480, 300, 'games', true);
+            $proj->slug = $faker->word();
             $proj->link = $faker->url();
 
             $proj->save();

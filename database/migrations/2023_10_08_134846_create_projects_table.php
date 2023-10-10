@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("title");
             $table->text("description");
             $table->string("image")->nullable();
-            // inteso come linguaggi di programmazione utilizzati
+            $table->string("slug")->unique();
             $table->string("link");
 
             $table->timestamps();
