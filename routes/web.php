@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 // use App\Http\Controllers\ProjectController as GuestProjectController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
