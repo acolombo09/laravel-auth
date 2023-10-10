@@ -55,8 +55,8 @@
                     </div>
 
                     <div class="w-100 text-center">
-                        <a class="btn btn-secondary" href="{{ route("admin.projects.index") }}">Annulla</a>
-                        <button class="btn btn-primary" type="submit">Salva</button>
+                        <a class="btn btn-secondary" href="{{ route("admin.projects.index") }}">Cancel</a>
+                        <button class="btn btn-primary" type="submit">Save</button>
                     </div>
                 </form>
             </div>

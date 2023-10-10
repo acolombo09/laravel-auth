@@ -9,9 +9,10 @@
                     </h2>
                 </div>
 
-                <form action="{{ route('admin.projects.update', $project->title) }}" method="POST">
+                <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
                     @csrf()
-                    @method("put")
+                    @method("PATCH")
+
                     {{-- title --}}
                     <div class="mb-3">
                         <label class="form-label">Title</label>
@@ -64,17 +65,16 @@
                         <a class="btn btn-secondary" href="{{ route("admin.projects.index") }}">Cancel</a>
                         <button class="btn btn-primary" type="submit">Save</button>
                     </div>
-                    <div class="d-flex justify-content-center w-100 my-3">
-                        <form action="{{ route("admin.projects.destroy", $project->title) }}" method="POST">
-                            @csrf
-                            @method("DELETE")
-                
-                            <button type="submit" class="btn btn-danger">Delete Project</button>
-                
-                        </form>
-                    </div>
-
                 </form>
+                <div class="d-flex justify-content-center w-100 my-3">
+                    <form action="{{ route("admin.projects.destroy", $project->title) }}" method="POST">
+                        @csrf
+                        @method("DELETE")
+            
+                        <button type="submit" class="btn btn-danger">Delete Project</button>
+            
+                    </form>
+                </div>
             </div>
         </div>
     </div>
