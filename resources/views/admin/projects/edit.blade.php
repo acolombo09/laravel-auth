@@ -67,7 +67,7 @@
                     </div>
                 </form>
                 <div class="d-flex justify-content-center w-100 my-3">
-                    <form action="{{ route("admin.projects.destroy", $project->title) }}" method="POST">
+                    <form action="{{ route("admin.projects.destroy", $project->slug) }}" method="POST">
                         @csrf
                         @method("DELETE")
             
