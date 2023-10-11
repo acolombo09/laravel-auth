@@ -70,7 +70,7 @@
                     {{-- checkbox per project published o in bozze --}}
                     <div class="mb-3">
                         <div class="form-check">
-                            <input type="checkbox" id="is_published_input" name="is_published" {{ $project->is_published ? "checked" : ""}}>
+                            <input type="checkbox" id="is_published_input" name="is_published" value="1" {{ $project->is_published ? "checked" : ""}}>
                             <label class="form-check-label" for="is_published_input">Published</label>
                         </div>
                     </div>

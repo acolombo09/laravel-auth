@@ -19,7 +19,7 @@
               </div>
               <div class="col-12 col-md-8 mt-5 mt-md-0 d-flex flex-column">
                 <p class="text-break">{{$project->description}}</p>
-                <small>Publishing Date: {{ $project->published_at?->format("d/m/Y H:i") }}</small>
+                <small>Publishing Date: {{ $project->published_at?->format("d/m/Y") }}</small>
                 <div class="mt-auto">
                   <div class="d-flex">
                     <div class="col-3 me-2">GitHub:</div>

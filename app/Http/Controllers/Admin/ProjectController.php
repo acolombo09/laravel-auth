@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Log;
 class ProjectController extends Controller {
     // INDEX utente admin
     public function index(): View {
@@ -58,6 +58,12 @@ class ProjectController extends Controller {
     // UPDATE
     public function update(ProjectUpsertRequest $request, $slug) {
         $data = $request->validated();
+
+        
+        // Log::debug(var_export($data, true));
+        // die();
+
+
         $project = Project::where("slug", $slug)->firstOrFail();
 
         // a questo punto dovrei rifare il procedimento per lo slug per aggiornarlo,
