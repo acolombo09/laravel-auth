@@ -17,6 +17,7 @@
           <div class="card-body">
             <h5 class="card-title text-center"><a class="text-decoration-none" href="{{route("admin.projects.show", $project->slug)}}">{{$project->title}}</a></h5>
             <p class="card-text">{{ $project->description }}</p>
+            <p class="card-text">{{ $project->published_at?->format("d/m/Y H:i") }}</p>
           </div>
         </div>
       </div>

@@ -31,6 +31,7 @@ class ProjectUpsertRequest extends FormRequest
             "description" => "required|string",
             "image" => "nullable|max:255",
             "link" => "required|string",
+            "is_published" => "nullable|boolean"
         ];
     }
 }

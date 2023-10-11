@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model {
     use HasFactory;
 
+    protected $casts = [
+        "published_at" => "datetime",
+    ];
+
     protected $fillable = [
         'title',
         'description',

@@ -13,13 +13,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger("category_id")->nullable();
-
-            $table->foreign("category_id")
-            ->references("id")
-            ->on("categories")
-            // quando la categoria viene cancellata, la categoria del post diventa null
-            ->onDelete("set null");
+            $table->timestamp('published_at')->nullable()->after("is_published");	
         });
     }
 

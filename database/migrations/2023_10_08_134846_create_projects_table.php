@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("image")->nullable();
             $table->string("slug")->unique();
             $table->string("link");
+            $table->boolean('is_published')->default(false);
+            $table->timestamp('published_at')->nullable();
 
             $table->timestamps();
         });

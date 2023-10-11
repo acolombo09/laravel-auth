@@ -67,7 +67,21 @@ class ProjectController extends Controller {
             $data["slug"] = $this->generateSlug($data["title"]);
         }
 
+        // se la checkbox è spuntata, il server riceve il valore della checkbox
+        // altrimenti, il server non riceve il valore della checkbox ma inserisce null
+        if (isset($data["is_published"])) {
+            $project->is_published = true;
+            $project->published_at = now();
+            // $project->save();
+        }else {
+            $project->is_published = false;
+            $project->published_at = null;
+            // $project->save();
+        }
+
+        // spostando l'update dopo l'if di is published, posso evitare di inserire i due save
         $project->update($data);
+        
 
         return redirect()->route("admin.projects.show", $project->slug);
     }

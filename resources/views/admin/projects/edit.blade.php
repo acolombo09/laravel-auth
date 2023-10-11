@@ -25,6 +25,12 @@
                         </div>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Publishing Date</label>
+                        <input type="date" class="form-control" name="published_at" value="{{ $project->published_at?->toDateString() }}">
+                    </div>
+
+
                     {{-- description --}}
                     <div class="mb-3">
                         <label class="form-label">Description</label>
@@ -58,6 +64,14 @@
                             @error('link')
                             <div class="invalid-feedback">{{$message}}</div>
                             @enderror
+                        </div>
+                    </div>
+
+                    {{-- checkbox per project published o in bozze --}}
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input type="checkbox" id="is_published_input" name="is_published" {{ $project->is_published ? "checked" : ""}}>
+                            <label class="form-check-label" for="is_published_input">Published</label>
                         </div>
                     </div>
 
