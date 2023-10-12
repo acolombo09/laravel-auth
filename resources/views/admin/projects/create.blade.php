@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
 
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf()
                     {{-- title --}}
                     <div class="mb-3">
@@ -32,9 +32,9 @@
 
                     {{-- image --}}
                     <div class="mb-3">
-                        <label class="form-label">Image (url)</label>
+                        <label class="form-label">Image</label>
                         <div>
-                            <input type="text" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}"
+                            <input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror"
                                 name="image">
                             @error('image')
                             <div class="invalid-feedback">{{$message}}</div>

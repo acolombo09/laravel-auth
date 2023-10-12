@@ -29,7 +29,8 @@ class ProjectUpsertRequest extends FormRequest
         return [
             "title" => "required|max:255",
             "description" => "required|string",
-            "image" => "nullable|max:255",
+            "image" => "nullable|image|max:6000",
+            "image_link" => "nullable|max:255",
             "link" => "required|string",
             "is_published" => "nullable|boolean"
         ];

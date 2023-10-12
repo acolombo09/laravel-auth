@@ -8,8 +8,11 @@ use App\Models\Project;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller {
     // INDEX utente admin
     public function index(): View {
@@ -83,6 +86,32 @@ class ProjectController extends Controller {
             $project->is_published = false;
             $project->published_at = null;
             // $project->save();
+        }
+        
+
+        if (isset($data["image_link"])) {
+            // Recupero il codice binario dell'immagine dal link
+            $imgLink = file_get_contents($data["image_link"]);
+
+            // creo un nome per il file
+            $path = "projects/" . uniqid();
+
+            // creo il file inserendo il codice binario come contenuto
+            File::put(storage_path("app/public/" . $path), $imgLink);
+
+            // salvo il path nel database
+            $data["image"] = $path;
+        } else if (isset($data["image"])) {
+
+            // se esiste già un'immagine, prima la cancello
+            if($project->image) {
+                Storage::delete($project->image);
+            }
+
+            // prima dell'update salvo il file uploadato nel filesystem
+            $image_path = Storage::put("projects", $data["image"]);
+            // il path mi serve per il db
+            $data["image"] = $image_path;
         }
 
         // spostando l'update dopo l'if di is published, posso evitare di inserire i due save

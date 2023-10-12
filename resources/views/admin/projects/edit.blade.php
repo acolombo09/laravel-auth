@@ -9,7 +9,7 @@
                     </h2>
                 </div>
 
-                <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
+                <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" enctype="multipart/form-data">
                     @csrf()
                     @method("PATCH")
 
@@ -43,15 +43,19 @@
                         </div>
                     </div>
 
-                    {{-- image --}}
+                    {{-- image (solo url) --}}
                     <div class="mb-3">
-                        <label class="form-label">Image (url)</label>
-                        <div>
-                            <input type="text" class="form-control @error('image') is-invalid @enderror" value="{{old('image', $project->image)}}"
-                                name="image">
-                            @error('image')
-                            <div class="invalid-feedback">{{$message}}</div>
-                            @enderror
+                        <label class="form-label">Image</label>
+                        @if($project->image)
+                        <img src="{{ asset('/storage/' . $project->image) }}" alt="" class="img-thumbnail" style="width: 300px">
+                        @endif
+                
+                        <div class="input-group">
+                            <label class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">
+                            <input type="file" class="form-control d-none" name="image" accept="image/*">
+                            Upload
+                            </label>
+                            <input type="text" class="form-control" name="image_link">
                         </div>
                     </div>
 
