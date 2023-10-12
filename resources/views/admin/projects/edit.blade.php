@@ -52,8 +52,8 @@
                 
                         <div class="input-group">
                             <label class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">
-                            <input type="file" class="form-control d-none" name="image" accept="image/*">
-                            Upload
+                                <input type="file" class="form-control d-none" name="image" accept="image/*">
+                                Upload
                             </label>
                             <input type="text" class="form-control" name="image_link">
                         </div>

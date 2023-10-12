@@ -33,13 +33,11 @@
                     {{-- image --}}
                     <div class="mb-3">
                         <label class="form-label">Image</label>
-                        <div>
-                            <input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror"
-                                name="image">
-                            @error('image')
-                            <div class="invalid-feedback">{{$message}}</div>
-                            @enderror
-                        </div>
+                        <input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror"
+                            name="image">
+                        @error('image')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                     </div>
 
                     {{-- link --}}

@@ -13,7 +13,7 @@
 
       <div class="card">
         <div class="card h-100" style="width: 300px;">
-          <img src="{{$project->image}}" class="card-img-top object-fit-cover h-100" alt="{{$project->title}}">
+          <img src="{{ asset('/storage/' . $project->image) }}" class="card-img-top object-fit-cover h-100" alt="{{$project->title}}">
           <div class="card-body">
             <h5 class="card-title text-center"><a class="text-decoration-none" href="{{route("admin.projects.show", $project->slug)}}">{{$project->title}}</a></h5>
             <p class="card-text">{{ $project->description }}</p>

@@ -36,6 +36,9 @@ class ProjectController extends Controller {
         // aggiungo lo stesso blocco di codice nella function update
         $data["slug"] = $this->generateSlug($data["title"]);
 
+        // salvo il file nel filesystem
+        $data["image"] = Storage::put("projects", $data["image"]);
+
         // fill e save
         $project = Project::create($data);
 
@@ -62,10 +65,8 @@ class ProjectController extends Controller {
     public function update(ProjectUpsertRequest $request, $slug) {
         $data = $request->validated();
 
-        
         // Log::debug(var_export($data, true));
         // die();
-
 
         $project = Project::where("slug", $slug)->firstOrFail();
 

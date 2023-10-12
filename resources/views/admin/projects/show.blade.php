@@ -16,7 +16,7 @@
           <div class="d-flex pt-2">
             <div class="row">
               <div class="col-12 col-md-4 text-center">
-                <img class="w-100 object-fit-cover" src="{{ $project->image }}" alt="{{ $project->title }}">
+                <img class="w-100 object-fit-cover" src="{{ asset('/storage/' . $project->image) }}" alt="{{ $project->title }}">
               </div>
               <div class="col-12 col-md-8 mt-5 mt-md-0 d-flex flex-column">
                 <p class="text-break">{{$project->description}}</p>
